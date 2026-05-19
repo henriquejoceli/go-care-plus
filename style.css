@@ -1,0 +1,270 @@
+:root {
+    --cp-dark-blue: #003a61;
+    --cp-blue: #0079C8;
+    --cp-light-bg: #f4f7f9;
+    --cp-accent-green: #58cc02;
+    --orange-streak: #ff9600;
+    --text-dark: #334155;
+    --text-muted: #64748b;
+}
+
+body {
+    background-color: var(--cp-light-bg);
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+}
+
+/* SIDEBAR DESKTOP */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 280px;
+    background-color: var(--cp-dark-blue);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-heading {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.list-nav-item {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.list-nav-item:hover, .list-nav-item.active {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.streak-card {
+    background-color: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* CONTEÚDO */
+#page-content-wrapper { 
+    width: 100%; 
+    overflow-y: auto;
+}
+
+.user-avatar {
+    width: 45px; 
+    height: 45px; 
+    background: var(--cp-blue);
+    color: white; 
+    border-radius: 50%; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    font-weight: bold;
+}
+
+/* CARDS */
+.card-main { border-radius: 20px; }
+.badge-status-green {
+    background: #dcfce7; 
+    color: #166534;
+    padding: 5px 15px; 
+    border-radius: 20px; 
+    font-weight: bold; 
+    font-size: 14px;
+}
+
+.doctor-icon {
+    width: 60px; 
+    height: 60px; 
+    background: #e6f2fa;
+    color: var(--cp-blue); 
+    border-radius: 15px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 24px;
+}
+
+.appt-info-box {
+    background: #f8fafc; 
+    padding: 12px; 
+    border-radius: 10px;
+    font-weight: bold; 
+    color: var(--cp-dark-blue);
+}
+
+.alert-journey {
+    background: #fff9db; 
+    border: 1px solid #ffe066;
+    padding: 15px; 
+    border-radius: 15px;
+}
+
+/* ÁREA DO MAPA (GOOGLE MAPS EMBED) */
+.map-container {
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* RECOMPENSAS */
+.reward-icon {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 12px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 22px;
+}
+
+/* NOTIFICAÇÕES (ESTILO HISTÓRICO) */
+.chat-container {
+    background: white; 
+    border-radius: 20px; 
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #f8fafc; 
+    padding: 15px 25px; 
+    border-bottom: 1px solid #e2e8f0;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.chat-avatar {
+    width: 35px; 
+    height: 35px; 
+    background: var(--cp-blue); 
+    color: white;
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.sms-bubble {
+    background: #f1f3f4; 
+    padding: 15px 20px; 
+    border-radius: 20px 20px 20px 5px;
+    margin-bottom: 20px; 
+    font-size: 14px; 
+    line-height: 1.5; 
+    max-width: 85%;
+    color: #475569;
+}
+
+.alert-bubble {
+    background: #fff9db; 
+    border: 1px solid #ffe066;
+}
+
+/* REAGENDAMENTO */
+.date-slot-card {
+    border: 2px solid #e2e8f0; 
+    border-radius: 20px; 
+    cursor: pointer;
+    transition: 0.2s; 
+    overflow: hidden;
+}
+
+.date-slot-card:hover, .date-slot-card.selected {
+    border-color: var(--cp-blue); 
+    background: #f0f9ff;
+}
+
+.date-header {
+    background: #f8fafc; 
+    padding: 10px; 
+    text-align: center;
+    font-weight: bold; 
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.date-body { 
+    padding: 15px; 
+    text-align: center; 
+}
+
+/* BOTÕES */
+.btn-action-success {
+    background-color: var(--cp-accent-green); 
+    color: white;
+    border: none; 
+    border-radius: 12px; 
+    padding: 12px 30px;
+    font-weight: bold; 
+    box-shadow: 0 4px 0 #46a302;
+    transition: 0.1s ease;
+}
+
+.btn-action-success:hover {
+    background-color: #61e002; 
+    color: white;
+}
+
+.btn-action-success:active {
+    transform: translateY(2px); 
+    box-shadow: 0 2px 0 #46a302;
+}
+
+.btn-action-success:disabled {
+    background-color: #cbd5e1; 
+    box-shadow: none; 
+    color: #94a3b8; 
+    cursor: not-allowed;
+}
+
+.btn-action-outline {
+    background: transparent; 
+    border: 2px solid #e2e8f0; 
+    color: var(--text-muted);
+    padding: 10px; 
+    border-radius: 12px; 
+    font-weight: bold; 
+    transition: 0.2s;
+}
+
+.btn-action-outline:hover {
+    background: #f1f5f9; 
+    color: var(--text-dark); 
+    border-color: #cbd5e1;
+}
+
+.btn-google-cal {
+    background: white; 
+    border: 1px solid #dadce0;
+    padding: 11px; 
+    border-radius: 12px; 
+    font-weight: 600;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px;
+    color: #3c4043; 
+    transition: 0.2s;
+}
+
+.btn-google-cal:hover { 
+    background: #f8fafc; 
+}
+
+.app-screen { display: none; }
+.app-screen.active { display: block; }

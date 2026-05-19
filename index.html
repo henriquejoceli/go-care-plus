@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Go Care+ | Dashboard </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        
+        <div class="bg-dark-blue border-end" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white p-4">
+                <h4 class="fw-bold mb-0">Go Care<span class="text-info">+</span></h4>
+                <small class="opacity-50">Portal do Paciente</small>
+            </div>
+            <div class="list-group list-group-flush px-3">
+                <a href="#" class="list-nav-item active" id="nav-dashboard" onclick="navegarPara('dashboard')">
+                    <i class="fa-solid fa-house me-3"></i> Início
+                </a>
+                <a href="#" class="list-nav-item" id="nav-notifications" onclick="navegarPara('notifications')">
+                    <i class="fa-solid fa-bell me-3"></i> Notificações 
+                    <span class="badge rounded-pill bg-danger ms-auto">3</span>
+                </a>
+                <a href="#" class="list-nav-item" id="nav-new-appt" onclick="navegarPara('new-appt')">
+                    <i class="fa-solid fa-calendar-plus me-3"></i> Nova consulta
+                </a>
+                <a href="#" class="list-nav-item" id="nav-rewards" onclick="navegarPara('rewards')">
+                    <i class="fa-solid fa-gift me-3"></i> Recompensas
+                </a>
+            </div>
+            <div class="sidebar-footer p-4 mt-auto">
+                <div class="streak-card">
+                    <i class="fa-solid fa-fire text-orange fs-4"></i>
+                    <div>
+                        <small class="d-block text-white-50">Health Streak</small>
+                        <strong class="text-white" id="sidebar-streak">4 Dias 🔥</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper">
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 px-4 border-bottom shadow-sm">
+                <div class="container-fluid">
+                    <h5 class="mb-0 fw-bold text-dark-blue" id="current-page-title">Dashboard Principal</h5>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="me-4 text-end">
+                            <span class="d-block fw-bold small">Henrique Bravi</span>
+                            <span class="text-primary small fw-bold" id="topbar-points">350 CarePoints</span>
+                        </div>
+                        <div class="user-avatar">HB</div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid p-4">
+                
+                <section id="screen-dashboard" class="app-screen active">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card card-main border-0 shadow-sm p-4 mb-4">
+                                <div class="d-flex justify-content-between align-items-start mb-4">
+                                    <div>
+                                        <h4 class="fw-bold text-dark-blue">Próxima Consulta</h4>
+                                        <p class="text-muted">Acompanhe sua rota em tempo real.</p>
+                                    </div>
+                                    <span class="badge-status-green">Confirmada</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 border-end">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="doctor-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                                            <div>
+                                                <h5 class="fw-bold mb-0">Dra. Fernanda Bueno</h5>
+                                                <small class="text-muted">Cardiologista</small>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <div class="appt-info-box mb-2">
+                                                <i class="fa-solid fa-location-dot text-danger me-2"></i> 
+                                                <strong>Clínica Vila Olímpia:</strong><br>
+                                                <small class="ms-4 text-muted">Rua das Olimpíadas, 205 - SP</small>
+                                            </div>
+                                            <div class="appt-info-box mb-2">
+                                                <i class="fa-solid fa-calendar-day me-2"></i> Hoje, 19 de Maio
+                                            </div>
+                                            <div class="appt-info-box">
+                                                <i class="fa-solid fa-clock me-2"></i> 17:00
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 mt-4">
+                                            <button class="btn btn-google-cal" onclick="alert('Consulta sincronizada com seu Google Agenda!')">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" alt="Google Agenda" width="18"> 
+                                                Adicionar ao Google Agenda
+                                            </button>
+                                            <button class="btn btn-action-outline w-100" onclick="navegarPara('reschedule')">
+                                                <i class="fa-solid fa-calendar-minus me-2"></i> Preciso Reagendar
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 ps-md-4">
+                                        <div class="alert-journey mb-3 shadow-sm">
+                                            <div class="mb-3">
+                                                <label class="small fw-bold text-dark mb-1">Cálculo de Rota (Sua Localização):</label>
+                                                <div class="row g-2">
+                                                    <div class="col-md-4">
+                                                        <input type="text" id="input-cep" class="form-control form-control-sm" placeholder="CEP (00000000)" maxlength="8">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group">
+                                                            <input type="text" id="input-origem" class="form-control form-control-sm" placeholder="Endereço manual ou via CEP">
+                                                            <button class="btn btn-primary btn-sm px-3" onclick="gerarRotaGoogle()">Calcular</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-white p-2 rounded border mb-2" style="font-size: 11px;">
+                                                <i class="fa-solid fa-flag-checkered text-success me-1"></i> 
+                                                <strong>Destino:</strong> Rua das Olimpíadas, 205, Vila Olímpia
+                                            </div>
+
+                                            <div class="map-container mb-2" id="box-mapa" style="height: 160px; border-radius: 12px; overflow: hidden; background: #e2e8f0; border: 1px solid #ffe066;">
+                                                <div class="h-100 d-flex align-items-center justify-content-center text-muted">
+                                                    <small><i class="fa-solid fa-map-location-dot me-2"></i>Insira sua localização para carregar o Google Maps</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="row g-2 text-center" id="panel-telemetria">
+                                                <div class="col-12">
+                                                    <div class="p-2 bg-white rounded-3 border small">
+                                                        <span class="text-muted">Tempo Estimado: </span>
+                                                        <strong class="text-primary" id="txt-tempo-estimado">Aguardando cálculo...</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="small mb-0 text-muted mt-2 text-center d-none" id="alert-sugestao-saida"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm p-4 bg-primary text-white mb-4">
+                                <h5 class="fw-bold mb-3">Health Streak 🔥</h5>
+                                <h1 class="display-4 fw-bold">4</h1>
+                                <p>Consultas seguidas comparecidas ou reagendadas com antecedência!</p>
+                                <hr class="opacity-25">
+                                <small>Compareça a mais 1 consulta para ganhar bônus de pontos!</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="screen-notifications" class="app-screen">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="chat-container shadow-sm">
+                                <div class="chat-header">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="chat-avatar"><i class="fa-solid fa-notes-medical"></i></div>
+                                        <strong>Go Care+ (Lembretes)</strong>
+                                    </div>
+                                    <i class="fa-solid fa-ellipsis-vertical text-muted"></i>
+                                </div>
+                                <div class="chat-body p-4">
+                                    <div class="sms-date text-center small text-muted mb-3">Há 2 dias</div>
+                                    <div class="sms-bubble">
+                                        Henrique, sua consulta com a Dra. Fernanda Bueno está chegando. Garanta sua sequência de presença 🔥 e acumule +100 CarePoints confirmando pelo Portal.
+                                    </div>
+
+                                    <div class="sms-date text-center small text-muted my-3">Ontem</div>
+                                    <div class="sms-bubble">
+                                        Falta 1 dia! Lembramos que sua consulta será amanhã às 17h. Se tiver imprevistos, reagende direto pelo painel para liberar a vaga e proteger seu Streak.
+                                    </div>
+
+                                    <div class="sms-date text-center small text-muted my-3">Hoje</div>
+                                    <div class="sms-bubble alert-bubble">
+                                        ⚠️ <strong>Alerta de Mobilidade:</strong> Identificamos tempo chuvoso na rota para a Vila Olímpia. Acesse o painel para calcular seu horário ideal de saída!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="screen-reschedule" class="app-screen">
+                    <div class="card card-main border-0 shadow-sm p-4">
+                        <h4 class="fw-bold text-dark-blue mb-2">Selecione uma nova data</h4>
+                        <p class="text-muted small mb-4">Clique em um dia para ver os horários de encaixe disponíveis.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="date-slot-card" onclick="mostrarHorarios(this, '03 de Junho', ['09:00', '14:00', '16:30'])">
+                                    <div class="date-header">03/06</div>
+                                    <div class="date-body"><p class="mb-0 fw-bold">Segunda-feira</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="date-slot-card" onclick="mostrarHorarios(this, '05 de Junho', ['08:30', '11:00', '13:15'])">
+                                    <div class="date-header">05/06</div>
+                                    <div class="date-body"><p class="mb-0 fw-bold">Quarta-feira</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="date-slot-card" onclick="mostrarHorarios(this, '07 de Junho', ['15:00', '17:00'])">
+                                    <div class="date-header">07/06</div>
+                                    <div class="date-body"><p class="mb-0 fw-bold">Sexta-feira</p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="container-horarios" class="mt-4 d-none">
+                            <h6 class="fw-bold text-dark-blue mb-3">Horários para <span id="data-selecionada-texto" class="text-primary"></span>:</h6>
+                            <div class="d-flex flex-wrap gap-2" id="lista-botoes-horarios"></div>
+                        </div>
+
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-action-success px-5" id="btn-confirmar-reagendar" onclick="confirmarReagendamento()" disabled>
+                                Confirmar reagendamento
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="screen-new-appt" class="app-screen">
+                    <div class="card card-main border-0 shadow-sm p-4">
+                        <h4 class="fw-bold text-dark-blue mb-4"><i class="fa-solid fa-calendar-plus text-primary me-2"></i>Agendar Nova Consulta</h4>
+                        
+                        <form id="form-nova-consulta" onsubmit="salvarNovaConsulta(event)">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Especialidade Médica</label>
+                                    <select class="form-select p-3" required>
+                                        <option value="" selected disabled>Escolha a especialidade...</option>
+                                        <option value="Cardiologia">Cardiologia</option>
+                                        <option value="Dermatologia">Dermatologia</option>
+                                        <option value="Ortopedia">Ortopedia</option>
+                                        <option value="Clínica Geral">Clínica Geral</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Unidade / Clínica Care Plus</label>
+                                    <select class="form-select p-3" required>
+                                        <option value="" selected disabled>Escolha a unidade...</option>
+                                        <option value="Vila Olímpia">Vila Olímpia (Rua das Olimpíadas, 205)</option>
+                                        <option value="Paulista">Paulista (Av. Paulista, 1000)</option>
+                                        <option value="Berrini">Berrini (Av. Eng. Luís Carlos Berrini, 500)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Escolha a Data</label>
+                                    <input type="date" id="input-data-nova" class="form-select p-3" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Período Ideal</label>
+                                    <div class="d-flex gap-4 pt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="periodo" id="p1" checked>
+                                            <label class="form-check-label fw-bold" for="p1">Manhã</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="periodo" id="p2">
+                                            <label class="form-check-label fw-bold" for="p2">Tarde</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 text-end">
+                                <button type="submit" class="btn btn-action-success px-5">Buscar Vagas Disponíveis</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="screen-rewards" class="app-screen">
+                    <div class="card card-main border-0 shadow-sm p-4 mb-4 bg-white">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <span class="text-uppercase text-muted small fw-bold d-block mb-1">Seu Saldo Atual</span>
+                                <h2 class="display-5 fw-bold text-dark-blue mb-0" id="rewards-balance">350 <span style="font-size: 24px; color: var(--cp-blue)">CarePoints</span></h2>
+                                <p class="text-muted mt-2 small">Continue comparecendo pontualmente para acumular mais e trocar por benefícios no clube de vantagens Care Plus.</p>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <div class="p-3 bg-light rounded-4 d-inline-block text-start">
+                                    <small class="text-muted d-block">Próximo resgate liberado com:</small>
+                                    <strong class="text-success"><i class="fa-solid fa-lock-open me-2"></i> 400 CarePoints</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bold text-dark-blue mb-3">Benefícios Disponíveis para Você</h5>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100 p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="reward-icon bg-success-subtle text-success"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+                                    <span class="badge bg-secondary">200 pts</span>
+                                </div>
+                                <h6 class="fw-bold mb-1">Desconto em Farmácias</h6>
+                                <p class="text-muted small">30% de desconto em medicamentos genéricos nas redes parceiras.</p>
+                                <button class="btn btn-sm btn-action-outline mt-auto" onclick="resgatarPremio(200, 'Desconto em Farmácias')">Resgatar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100 p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="reward-icon bg-primary-subtle text-primary"><i class="fa-solid fa-dumbbell"></i></div>
+                                    <span class="badge bg-secondary">400 pts</span>
+                                </div>
+                                <h6 class="fw-bold mb-1">Gympass / Wellhub Bônus</h6>
+                                <p class="text-muted small">Isenção da mensalidade do plano básico no primeiro mês de uso.</p>
+                                <button class="btn btn-sm btn-action-outline mt-auto" onclick="resgatarPremio(400, 'Gympass Bônus')">Resgatar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100 p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="reward-icon bg-warning-subtle text-warning"><i class="fa-solid fa-heart-pulse"></i></div>
+                                    <span class="badge bg-secondary">500 pts</span>
+                                </div>
+                                <h6 class="fw-bold mb-1">Consulta Nutricional Extra</h6>
+                                <p class="text-muted small">Direito a um check-up ou sessão com nutricionista fora do plano básico.</p>
+                                <button class="btn btn-sm btn-action-outline mt-auto" onclick="resgatarPremio(500, 'Consulta Nutricional')">Resgatar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
